@@ -8,22 +8,24 @@ class Project(models.Model):
     price_from = models.IntegerField()
     price_to = models.IntegerField()
     description = models.TextField(null=True)
+    category = models.ForeignKey('Category', on_delete=models.DO_NOTHING,related_name='categories_fields')
+    likes = models.ManyToManyField(User, null=True, related_name='like_project')
 
 
 class Category(models.Model):
-    project = models.ForeignKey('Project', on_delete=models.DO_NOTHING)
     categories = models.CharField(max_length=50)
 
-
-class Like(models.Model):
-    project = models.ManyToManyField('Project')
-    likes = models.IntegerField()
+    def __str__(self):
+        return self.categories
 
 
 class Comment(models.Model):
     project = models.ForeignKey('Project', on_delete=models.DO_NOTHING, related_name='comment')
     text = models.TextField(null=True)
     parent = models.ForeignKey('Comment', on_delete=models.DO_NOTHING, related_name='replies', null=True)
+
+    def __str__(self):
+        return self.project and self.parent
 
 
 
