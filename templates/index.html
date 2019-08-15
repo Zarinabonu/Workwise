@@ -222,7 +222,7 @@
 								<li><a href="#" title="">Faqs</a></li>
 								<li><a href="#" title="">Terms & Conditions</a></li>
 							</ul>
-							<h3 class="tc"><a href="#" title="">Logout</a></h3>
+							<h3 class="tc"><a href="{% url 'logout' %}" title="">Logout</a></h3>
 						</div><!--user-account-settingss end-->
 					</div>
 				</div><!--header-data end-->
@@ -244,18 +244,18 @@
 												</div>
 											</div><!--username-dt end-->
 											<div class="user-specs">
-												<h3>John Doe</h3>
+												<h3>{{ request.user.username }}</h3>
 												<span>Graphic Designer at Self Employed</span>
 											</div>
 										</div><!--user-profile end-->
 										<ul class="user-fw-status">
 											<li>
 												<h4>Following</h4>
-												<span>34</span>
+												<span>{{ request.user.profile.following.all | length }}</span>
 											</li>
 											<li>
 												<h4>Followers</h4>
-												<span>155</span>
+												<span>{{ request.user.profile.followers.all | length }}</span>
 											</li>
 											<li>
 												<a href="#" title="">View Profile</a>
@@ -268,54 +268,16 @@
 											<i class="la la-ellipsis-v"></i>
 										</div><!--sd-title end-->
 										<div class="suggestions-list">
-											<div class="suggestion-usd">
-												<img src="{%  static 'images/resources/s1.png' %}" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="{%  static 'images/resources/s2.png' %}" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="{%  static 'images/resources/s3.png' %}" alt="">
-												<div class="sgt-text">
-													<h4>Poonam</h4>
-													<span>Wordpress Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="{%  static 'images/resources/s4.png' %}" alt="">
-												<div class="sgt-text">
-													<h4>Bill Gates</h4>
-													<span>C & C++ Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="{%  static 'images/resources/s5.png' %}" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
+											{% for suggest_friend in  suggest %}
 											<div class="suggestion-usd">
 												<img src="{%  static 'images/resources/s6.png' %}" alt="">
 												<div class="sgt-text">
-													<h4>John Doe</h4>
+													<h4>{{ suggest_friend.username }}</h4>
 													<span>PHP Developer</span>
 												</div>
-												<span><i class="la la-plus"></i></span>
+												<span><a id="follow" data-id="{{ suggest_friend.id }}" data-url="{% url 'user-following' %}"><i class="la la-plus"></i></a></span>
 											</div>
+                                            {% endfor %}
 											<div class="view-more">
 												<a href="#" title="">View More</a>
 											</div>
@@ -416,72 +378,20 @@
 												<i class="la la-ellipsis-v"></i>
 											</div>
 											<div class="profiles-slider">
-												<div class="user-profy">
-													<img src="{%  static 'images/resources/user1.png' %}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{%  static 'images/envelop.png' %}" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="{%  static 'images/resources/user2.png' %}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{%  static 'images/envelop.png' %}" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
+												{% for suggest in suggestions %}
 												<div class="user-profy">
 													<img src="{%  static 'images/resources/user3.png' %}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
+													<h3>{{ suggest.username }}</h3>
+													<span>Graphic Designer</span>m
 													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
+														<li><a href="#" id="follow" data-id="{{ suggest.id }}" data-url="{% url 'user-following' %}" title="" class="followw">Follow</a></li>
 														<li><a href="#" title="" class="envlp"><img src="{%  static 'images/envelop.png' %}" alt=""></a></li>
 														<li><a href="#" title="" class="hire">hire</a></li>
 													</ul>
 													<a href="#" title="">View Profile</a>
 												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="{%  static 'images/resources/user1.png' %}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{%  static 'images/envelop.png' %}" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="{%  static 'images/resources/user2.png' %}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{%  static 'images/envelop.png' %}" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="{%  static 'images/resources/user3.png' %}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="{%  static 'images/envelop.png' %}" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
+
+                                                {% endfor %}
 											</div><!--profiles-slider end-->
 										</div><!--top-profiles end-->
 										<div class="post-bar">
@@ -895,15 +805,14 @@
 					<form>
 						<div class="row">
 							<div class="col-lg-12">
-								<input type="text" name="title" placeholder="Title">
+								<input type="text" name="title2" placeholder="Title">
 							</div>
 							<div class="col-lg-12">
 								<div class="inp-field">
 									<select>
-										<option>Category</option>
-										<option>Category 1</option>
-										<option>Category 2</option>
-										<option>Category 3</option>
+                                        {% for c in categories %}
+										<option>{{ c }}</option>
+                                        {% endfor %}
 									</select>
 								</div>
 							</div>
@@ -912,15 +821,16 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="price-br">
-									<input type="text" name="price1" placeholder="Price">
+									<input type="text" name="price" placeholder="Price">
 									<i class="la la-dollar"></i>
 								</div>
 							</div>
 							<div class="col-lg-6">
 								<div class="inp-field">
 									<select>
-										<option>Full Time</option>
-										<option>Half time</option>
+                                        {% for t in time %}
+										<option>{{ t }}</option>
+                                        {% endfor %}
 									</select>
 								</div>
 							</div>
@@ -929,7 +839,7 @@
 							</div>
 							<div class="col-lg-12">
 								<ul>
-									<li><button class="active" type="submit" value="post">Post</button></li>
+									<li><button id = "createButton" data-url="{% url 'api-job-create' %}" class="active" type="submit" value="post">Post</button></li>
 									<li><a href="#" title="">Cancel</a></li>
 								</ul>
 							</div>
@@ -1101,6 +1011,66 @@
 <script type="text/javascript" src="{%  static 'lib/slick/slick.min.js' %}"></script>
 <script type="text/javascript" src="{%  static 'js/scrollbar.js' %}"></script>
 <script type="text/javascript" src="{%  static 'js/script.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $("#createButton").click(function (e) {
+                e.preventDefault();
+
+                let formData = new FormData();
+
+                formData.append('title', $('input[name="title2"]').val());
+                {#formData.append('category', $('input[name="category"]').val());#}
+                {#formData.append('skills', $('input[name="skills"]').val());#}
+                {#formData.append('price', $('select[name="price"]').val());#}
+                {#formData.append('time', $('input[name="time"]').val());#}
+                {#formData.append('description', $('input[name="description"]').val());#}
+                {#formData.append('title', title);#}
+
+                var url = $("#createButton").data("url");
+                $.ajax({
+                    headers: { "X-CSRFToken": "{{csrf_token}}" },
+                    url: url,
+                    processData: false,
+                    contentType: false,
+                    method: 'POST',
+                    data: formData,
+                    success: function (data) {
+                        {#window.location.href = '/about/list';#}
+                    },
+                    error: function (data) {
+                        alert('Error');
+                    }
+                });
+            })
+        });
+    </script>
+<script>
+    $(document).ready(function () {
+            $("#follow").click(function (e) {
+                e.preventDefault();
+
+
+                var f_id = $("#follow").data("id");
+                let formData = new FormData();
+                formData.append('f_id', f_id);
+                var url = $("#follow").data("url");
+                $.ajax({
+                    headers: { "X-CSRFToken": "{{csrf_token}}" },
+                    url: url,
+                    processData: false,
+                    contentType: false,
+                    method: 'POST',
+                    data: formData,
+                    success: function (data) {
+                        {#window.location.href = '/service/list';#}
+                    },
+                    error: function (data) {
+                        alert('Error');
+                    }
+                });
+            })
+        });
+</script>
 
 </body>
 </html>
