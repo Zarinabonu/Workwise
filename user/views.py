@@ -12,7 +12,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 import Job
-from Job.models import Post, Category, Time
+from Job.models import Post, Category, Time, Comment
+from Project.models import Project
+import Project
 from user.models import Profile
 
 
@@ -51,6 +53,14 @@ class Call_Index(View):
         u = User.objects.get(username=request.user.username)
         f_set = u.profile.following.all()
         ids = f_set.values_list('id', flat=True)
+        r = request.user.id
+        ad = list(ids)
+        ad.append(r)
+
+        # lists = ad.append(r)
+        # print(ad)
+        # u = ids.append(request.user.id)
+        # print('IDS ALL: ',ids, 'REQUEST :', r,' friends List :', ad,' ALL LISTS:'r)
         suggestions = User.objects.exclude(id__in=ids).filter(~Q(id=u.id)).annotate(count_suggest=Count('following')).order_by('-count_suggest')[:5]
         s_list = []
         for friend_my in f_set:
@@ -65,7 +75,12 @@ class Call_Index(View):
         posts = Post.objects.all()
         categories = Category.objects.all()
         times = Time.objects.all()
-        return render(request, 'index.html', {'suggestions': suggestions, 'suggest': s_list, 'categories': categories, 'time': times})
+        category_project = Project.models.Category.objects.all()
+        posts = Post.objects.filter(pk__in=ad)
+
+        # comment = Comment.objects.filtet(post__id=request.post.id)
+        print('AA ', category_project)
+        return render(request, 'index.html', {'suggestions': suggestions, 'suggest': s_list, 'categories': categories, 'time': times, 'category_pro': category_project,'posts':posts})
 
 
 class User_followers(View):

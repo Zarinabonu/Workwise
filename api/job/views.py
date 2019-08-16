@@ -4,13 +4,24 @@ from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .serializers import JobCreateSerializer
-from Job.models import Post
+from .serializers import JobCreateSerializer, CommentSerializer, ReplySerializer
+from Job.models import Post, Comment
 
 
 class Job_Create(CreateAPIView):
     queryset = Post.objects.all()
     serializer_class = JobCreateSerializer
+
+
+class Comment_Create(CreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+
+class Reply_Create(CreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = ReplySerializer
+
 
 
 class Job_Update(UpdateAPIView):

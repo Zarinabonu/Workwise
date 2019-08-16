@@ -32,6 +32,6 @@ class Country(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_profile(sender,instance, created, **kwargs):
+def create_profile(sender, instance, created, **kwargs):
     if created:
         p = Profile.objects.create(user=instance)

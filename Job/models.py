@@ -30,10 +30,10 @@ class Time(models.Model):
 
 
 class Comment(models.Model):
-    project = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='comments')
+    post = models.ForeignKey('Post', on_delete=models.DO_NOTHING)
     text = models.TextField(null=True)
     reply = models.ForeignKey('Comment', on_delete=models.DO_NOTHING, related_name='replies', null=True)
-
-    def __str__(self):
-        return self.reply or self.project
+    reply_is = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
 # Create your models her
