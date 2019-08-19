@@ -4,8 +4,9 @@ from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .serializers import JobCreateSerializer, CommentSerializer, ReplySerializer
-from Job.models import Post, Comment
+from .serializers import JobCreateSerializer, CommentSerializer, ReplySerializer, LikesSerializer, SavedSerializer, \
+    NotificationSerializer, ViewSerializer
+from Job.models import Post, Comment, Notification
 
 
 class Job_Create(CreateAPIView):
@@ -34,6 +35,7 @@ class Job_Delete(DestroyAPIView):
     queryset = Post.objects.all()
     lookup_url_kwarg = 'id'
 
+
 class Job_likeView(APIView):
     def get(self, request):
         print(request.GET)
@@ -51,3 +53,24 @@ class Job_likeView(APIView):
         # u = request.user
         # print('USERNAME ', u)
         # return Response( status=status.HTTP_200_OK)
+
+
+class Job_Like_View(CreateAPIView):
+    serializer_class = LikesSerializer
+    queryset = Post.objects.all()
+
+
+class Job_Saved_View(CreateAPIView):
+    serializer_class = SavedSerializer
+    queryset = Post.objects.all()
+
+
+class Job_Notification_View(CreateAPIView):
+    serializer_class = NotificationSerializer
+    queryset = Notification.objects.all()
+
+
+class JobView_View(CreateAPIView):
+    serializer_class = ViewSerializer
+    queryset = Post.objects.all()
+

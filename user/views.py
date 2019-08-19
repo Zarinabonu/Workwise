@@ -6,12 +6,12 @@ from django.db.models import Count, Q
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-import Job
+# import Job
 from Job.models import Post, Category, Time, Comment
 from Project.models import Project
 import Project
@@ -77,10 +77,20 @@ class Call_Index(View):
         times = Time.objects.all()
         category_project = Project.models.Category.objects.all()
         posts = Post.objects.filter(pk__in=ad)
+        top = Post.objects.all().order_by('-price')[:5]
+        viewed = Post.objects.all().order_by('-view')[:3]
+        print('JOB TOP :',top)
 
         # comment = Comment.objects.filtet(post__id=request.post.id)
         print('AA ', category_project)
-        return render(request, 'index.html', {'suggestions': suggestions, 'suggest': s_list, 'categories': categories, 'time': times, 'category_pro': category_project,'posts':posts})
+        return render(request, 'index.html', {'suggestions': suggestions,
+                                              'suggest': s_list,
+                                              'categories': categories,
+                                              'time': times,
+                                              'category_pro': category_project,
+                                              'posts': posts,
+                                              'top_set': top,
+                                              'm_viewed': viewed})
 
 
 class User_followers(View):
@@ -107,5 +117,12 @@ class User_following(APIView):
         f.save()
 
         return Response(status=status.HTTP_200_OK)
+
+
+class Person_DetailView(DetailView):
+    template_name = 'profile/detail.html'
+    model = User
+    context_object_name = 'detail'
+
 
 # Create your views here.

@@ -2,40 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46c5e62e-7f68-4f43-bff2-1b3bd7516de4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/serch/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/serch/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/serch/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/profile/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/0002_category.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/0003_time.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/0004_comment_like.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/0005_auto_20190813_1254.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/0006_auto_20190814_0727.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/0007_auto_20190814_0855.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/0008_auto_20190814_0858.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Job/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Job/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Job/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/migrations/0002_auto_20190813_1030.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/migrations/0003_auto_20190813_1056.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/migrations/0004_auto_20190814_0735.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/job/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/job/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/job/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/job/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/job/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/job/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/project/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/project/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/0002_auto_20190814_0542.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/0003_auto_20190814_0547.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/0004_auto_20190814_0547.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/0005_profile_save_job.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/0006_profile_save_project.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/0007_auto_20190814_1109.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/0008_auto_20190814_1143.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -136,7 +116,8 @@
       <workItem from="1565682502710" duration="16718000" />
       <workItem from="1565736115966" duration="29472000" />
       <workItem from="1565844991764" duration="23685000" />
-      <workItem from="1565929446910" duration="26172000" />
+      <workItem from="1565929446910" duration="26381000" />
+      <workItem from="1566187847443" duration="29285000" />
     </task>
     <servers />
   </component>

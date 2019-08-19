@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    {% block css %}
+        <link href="{% static 'assets/css/bootstrap-select.css' %}" rel='stylesheet' type='text/css'>
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    <div class="main-section">
+            <div class="container">
+                <div class="main-section-data">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                            <div class="main-left-sidebar no-margin">
+                                <div class="user-data full-width">
+                                    <div class="user-profile">
+                                        <div class="username-dt">
+                                            <div class="usr-pic">
+                                                <img src="{% static 'images/resources/user-pic.png' %}" alt="">
+                                            </div>
+                                        </div><!--username-dt end-->
+                                        <div class="user-specs">
+                                            <h3>{{ request.user.username }}</h3>
+                                            <span>Graphic Designer at Self Employed</span>
+                                        </div>
+                                    </div><!--user-profile end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}
+</body>>
