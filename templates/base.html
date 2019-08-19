@@ -16,14 +16,15 @@
     <link rel="stylesheet" type="text/css" href="{% static 'lib/slick/slick-theme.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
-{#    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.auto-complete.css' %}">#}
+{#    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.10.6/jquery.typeahead.css" rel="stylesheet" />#}
+{#    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />#}
     {% block css %}
 
     {% endblock %}
 </html>
 <body>
-<header>
-        <div class="container">
+<header>        <div class="container">
             <div class="header-data">
                 <div class="logo">
                     <a href="index.html" title=""><img src="{% static 'images/logo.png' %}" alt=""></a>
@@ -35,7 +36,13 @@
 {#                            ...#}
 {#                          <option value="WY">Wyoming</option>#}
 {#                        </select>#}
-                        <button type="submit"><i class="la la-search"></i></button>
+{#                        <input type="text" name="user" id="usercomplete"/>#}
+                        <form id="search" method="POST" action="{% url 'user-search' %}">
+                            {% csrf_token %}
+                            <input type="text" class="form-control" id="txtSearch" name="txtSearch">
+{#                            <button type="submit" class="btn btn-default btn-submit">Submit</button>#}
+                        </form>
+{#                        <button type="submit"><i class="la la-search"></i></button>#}
                     </form>
                 </div><!--search-bar end-->
                 <nav>
@@ -237,10 +244,34 @@
 <script type="text/javascript" src="{%  static 'lib/slick/slick.min.js' %}"></script>
 <script type="text/javascript" src="{%  static 'js/scrollbar.js' %}"></script>
 <script type="text/javascript" src="{%  static 'js/script.js' %}"></script>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script> <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+
+{#<script type="text/javascript" src="{%  static 'js/jquery.auto-complete.js.js' %}"></script>#}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>#}
+
+<script>
+
+        $(document).ready(function(){
+            $("#txtSearch").autocomplete({
+                source: "{% url 'user-search' %}",
+                minLength: 2,
+                open: function(){
+                    setTimeout(function () {
+                        $('.ui-autocomplete').css('z-index', 99);
+                    }, 0);
+                },
+                select: function (event, ui) {
+                    alert(ui.item.label);
+
+                }
+              });        });
+
+</script>
 {% block content %}
 
 {% endblock %}
-{#<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>#}
+
 {##}
 {#<script>#}
 {#    jQuery(document).ready(function($){#}
