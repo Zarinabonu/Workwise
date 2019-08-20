@@ -2,19 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46c5e62e-7f68-4f43-bff2-1b3bd7516de4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/serch/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/serch/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/serch/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/profile/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Job/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0002_remove_comment_date.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0003_comment_created.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0004_auto_20190816_0835.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0005_comment_reply_is.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0006_auto_20190819_0507.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0007_auto_20190819_0656.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0008_post_saved.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0009_notification.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/0010_post_view.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/templatetags/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Job/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Job/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/templatetags/extra_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/job/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/job/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/job/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/job/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/job/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/job/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
@@ -118,6 +128,7 @@
       <workItem from="1565844991764" duration="23685000" />
       <workItem from="1565929446910" duration="26381000" />
       <workItem from="1566187847443" duration="29285000" />
+      <workItem from="1566255438774" duration="21883000" />
     </task>
     <servers />
   </component>

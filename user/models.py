@@ -35,3 +35,4 @@ class Country(models.Model):
 def create_profile(sender, instance, created, **kwargs):
     if created:
         p = Profile.objects.create(user=instance)
+        p.save()

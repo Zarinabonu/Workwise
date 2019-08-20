@@ -23,16 +23,445 @@
                                             </div>
                                         </div><!--username-dt end-->
                                         <div class="user-specs">
-                                            <h3>{{ request.user.username }}</h3>
+                                            <h3>{{ user.username}}</h3>
                                             <span>Graphic Designer at Self Employed</span>
                                         </div>
                                     </div><!--user-profile end-->
+                                    <ul class="user-fw-status">
+                                        <li>
+                                            <h4>Following</h4>
+                                            <span>{{ user.profile.following.all | length }}</span>
+                                        </li>
+                                        <li>
+                                            <h4>Followers</h4>
+                                            <span>{{ user.profile.followers.all | length }}</span>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="">Follow</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+                    <div class="col-lg-6 col-md-8 no-pd">
+                            <div class="main-ws-sec">
+                                    {% for p in posts %}
+
+                                                <div class="posts-section">
+
+                                                <div class="post-bar">
+                                                    <div class="post_topbar">
+                                                        <div class="usy-dt">
+                                                            <img src="{% static 'images/resources/us-pic.png' %}" alt="">
+                                                            <div class="usy-name">
+                                                                <h3> {{ p.user.username }} </h3>
+                                                                <span><img src="{% static 'images/clock.png' %}"
+                                                                           alt="">3 min ago</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ed-opts">
+                                                            <a href="#" title="" class="ed-opts-open"><i
+                                                                    class="la la-ellipsis-v"></i></a>
+                                                            <ul class="ed-options">
+                                                                <li><a href="#" title="">Edit Post</a></li>
+                                                                <li><a href="#" title="">Unsaved</a></li>
+                                                                <li><a href="#" title="">Unbid</a></li>
+                                                                <li><a href="#" title="">Close</a></li>
+                                                                <li><a href="#" title="">Hide</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="epi-sec">
+                                                        <ul class="descp">
+                                                            <li><img src="{% static 'images/icon8.png' %}"
+                                                                     alt=""><span>Epic Coder</span>
+                                                            </li>
+                                                            <li><img src="{% static 'images/icon9.png' %}"
+                                                                     alt=""><span>India</span></li>
+                                                        </ul>
+                                                        <ul class="bk-links">
+                                                        <a class="createLike" href="#" data-id="{{ p.id }}" data-url="{% url 'api-job-like' %}"><i class="la la-heart"></i> Like</a>
+
+                                                            <li><a data-id="{{ p.id }}" class="createSave" data-url="{% url 'api-job-save' %}" href="#" title=""><i class="la la-bookmark"></i></a></li>
+                                                            <li><a class="createNotification" data-id="{{ p.id }}" data-url="{% url 'api-job-notification' %}" href="#" title=""><i class="la la-envelope"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="job_descp">
+                                                        <h3>{{ p.title }}</h3>
+                                                        <ul class="job-dt">
+                                                            <li><a href="#" title="">Full Time</a></li>
+                                                            <li><span>${{ p.time }}/ hr</span></li>
+                                                        </ul>
+                                                        <p>{{ p.description }}<a data-id="{{ p.id }}" class="createView" data-url="{% url 'api-job-view' %}" href="#" title="">view more</a></p>
+                                                        <ul class="skill-tags">
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="job-status-bar">
+                                                        <ul class="like-com">
+                                                            <li>
+                                                                <a class="createLike" href="#" data-id="{{ p.id }}" data-url="{% url 'api-job-like' %}"><i class="la la-heart"></i> Like</a>
+                                                                <img src="{% static 'images/liked-img.png' %}" alt="">
+                                                                <span>{{ p.likes.all | length }}</span>
+                                                            </li>
+                                                            <li><a href="#" title="" class="com"><img
+                                                                    src="{% static 'images/com.png' %}" alt=""> {{ p.comment_set.all | length }}</a>
+                                                            </li>
+                                                        </ul>
+                                                        <a><i class="la la-eye"></i>{{ p.view.all | length}}</a>
+                                                    </div>
+                                                    <div class="comment-section">
+                                                        <div class="plus-ic">
+                                                            <i class="la la-plus"></i>
+                                                        </div>
+                                                        <div class="comment-sec">
+                                                            <ul>
+
+                                                                <li>
+                                                                    {% for coom in p.comment_set.all %}
+                                                                    <div class="comment-list">
+
+                                                                            <div class="bg-img">
+                                                                                <img src="{% static 'images/resources/bg-img3.png' %}"
+                                                                                     alt="">
+                                                                            </div>
+                                                                            <div class="comment">
+                                                                                <h3>{{ coom.user.username }}</h3>
+                                                                                <span><img src="{% static 'images/clock.png' %}"
+                                                                                           alt=""> {{ coom.created }}</span>
+                                                                                <p>{{ coom.text }}</p>
+            {#                                                                    <a href="#" class="createReply"  id="createReply" data-url="{% url 'api-reply-create' %}" data-id="{{ coom.id }}" title=""><i#}
+            {#                                                                            class="fa fa-reply-all"></i>Reply</a>#}
+
+                                                                                <footer id="sub" class="blockquote-footer">by
+                                                                                    <cite title="Source Title" >{{coom.user.username}}  {{coom.created}}<button class="rep">Reply</button></cite>
+                                                                                  </footer>
+
+                                                                                    <div class="post-comment">
+
+                                                                                        <div class="comment_box">
+                                                                                             <form >
+                                                                                                <div class="hidden" style="display: none">
+                                                                                                    <input  id="coomtext2{{ coom.id }}" name ="text_reply" class="form-control" rows="3">
+                                                                                                    <input class="createReply"  id="createReply" data-id="{{ coom.id }}" data-url="{% url 'api-reply-create' %}" type="submit" class="btn btn-info m-t-10 float-right" >
+                                                                                                </div>
+                                                                                            </form>
+                                                                                        </div>
+                                                                                    </div>
+
+
+
+                                                                            </div>
+
+                                                                    </div><!--comment-list end-->
+                                                                        {% endfor %}
+                                                                </li>
+                                                            </ul>
+                                                        </div><!--comment-sec end-->
+                                                        <div class="post-comment">
+                                                            <div class="cm_img">
+                                                                <img src="{% static 'images/resources/bg-img4.png' %}" alt="">
+                                                            </div>
+                                                            <div class="comment_box">
+                                                                <form>
+                                                                    <input id="coomtext{{ p.id }}" name="comment_text" type="text" placeholder="Post a comment">
+                                                                    <button class="createComment" id="createComment"
+                                                                            data-url="{% url 'api-comment-create'  %}"
+                                                                            data-id="{{ p.id }}"
+                                                                            type="submit">Send
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+
+                                                        </div><!--post-comment end-->
+
+                                                    </div>
+
+                                                </div><!--post-bar end-->
+                                            {% endfor %}
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".createView").click(function (e) {
+                e.preventDefault();
+
+            let formData = new FormData();
+            {#var input = $(`#coomtext${this.getAttribute("data-id")}`).val();#}
+
+            var url = $(".createView").data("url");
+            var id = this.getAttribute("data-id");
+
+            formData.append('post', id);
+
+
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    {#window.location.href = '/about/list';#}
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+        })
+    });
+</script>
+
+<script>
+        $(document).ready(function () {
+            $(".createNotification").click(function (e) {
+                e.preventDefault();
+
+            let formData = new FormData();
+            {#var input = $(`#coomtext${this.getAttribute("data-id")}`).val();#}
+
+            var url = $(".createNotification").data("url");
+            var id = this.getAttribute("data-id");
+
+            formData.append('post', id);
+
+
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    {#window.location.href = '/about/list';#}
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+        })
+    });
+</script>
+
+ <script>
+        $(document).ready(function () {
+            $(".createSave").click(function (e) {
+                e.preventDefault();
+
+            let formData = new FormData();
+            {#var input = $(`#coomtext${this.getAttribute("data-id")}`).val();#}
+
+            var url = $(".createSave").data("url");
+            var id = this.getAttribute("data-id");
+
+            formData.append('post', id);
+
+
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    {#window.location.href = '/about/list';#}
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+        })
+    });
+</script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".createLike").click(function (e) {
+                e.preventDefault();
+
+            let formData = new FormData();
+            {#var input = $(`#coomtext${this.getAttribute("data-id")}`).val();#}
+
+            var url = $(".createLike").data("url");
+            var id = this.getAttribute("data-id");
+
+            formData.append('post', id);
+
+
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    {#window.location.href = '/about/list';#}
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+        })
+    });
+</script>
+
+<script>
+    $(".rep").click(function (e) {
+        var p=$(this).parent().parent().parent().find(".hidden")
+        console.log(p)
+        {#p.css("display","block")#}
+        p.css('display', p.css('display') === 'none' ? 'block' : 'none');
+        {#s.css('display':'block')#}
+    });
+</script>
+
+    <script>
+        $(document).ready(function () {
+            $(".createComment").click(function (e) {
+                e.preventDefault();
+
+            let formData = new FormData();
+            var input = $(`#coomtext${this.getAttribute("data-id")}`).val();
+
+
+            formData.append('text', input);
+
+            var url = $("#createComment").data("url");
+            var id = this.getAttribute("data-id");
+
+            formData.append('post', id);
+
+
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    {#window.location.href = '/about/list';#}
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+        })
+    });
+</script>
+
+<script>
+        $(document).ready(function () {
+            $(".createReply").click(function (e) {
+                e.preventDefault();
+
+            let formData = new FormData();
+            var input = $(`#coomtext2${this.getAttribute("data-id")}`).val();
+
+
+            formData.append('text', input);
+
+            var url = $("#createReply").data("url");
+            var id = this.getAttribute("data-id");
+
+            {#formData.append('post', id);#}
+            formData.append('parent_id', id);
+
+
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    {#window.location.href = '/about/list';#}
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+        })
+    });
+</script>
+
+    <script>
+        $(document).ready(function () {
+            $("#createButton").click(function (e) {
+                e.preventDefault();
+
+            let formData = new FormData();
+
+            formData.append('title', $('input[name="title2"]').val());
+            formData.append('category', $("#category2").find(":selected").text());
+            formData.append('skills', $('input[name="skills2"]').val());
+            formData.append('price', $('input[name="price2"]').val());
+            formData.append('time', $("#time2").find(":selected").text());
+            formData.append('description', $('input[name="description2"]').val());
+
+            {#formData.append('category', $('input[name="category"]').val());#}
+            {#formData.append('skills', $('input[name="skills"]').val());#}
+            {#formData.append('price', $('select[name="price"]').val());#}
+            {#formData.append('time', $('input[name="time"]').val());#}
+            {#formData.append('description', $('input[name="description"]').val());#}
+            {#formData.append('title', title);#}
+
+            var url = $("#createButton").data("url");
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    {#window.location.href = '/about/list';#}
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+        })
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#follow").click(function (e) {
+            e.preventDefault();
+
+
+            var f_id = $("#follow").data("id");
+            let formData = new FormData();
+            formData.append('f_id', f_id);
+            var url = $("#follow").data("url");
+            $.ajax({
+                headers: {"X-CSRFToken": "{{csrf_token}}"},
+                url: url,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    {#window.location.href = '/service/list';#}
+                },
+                error: function (data) {
+                    alert('Error');
+                }
+            });
+        })
+    });
+</script>
+
 {% endblock %}
 </body>>

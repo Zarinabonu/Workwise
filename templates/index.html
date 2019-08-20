@@ -215,6 +215,7 @@
                                                     </li>
                                                 </ul>
                                             </div><!--comment-sec end-->
+
                                             <div class="post-comment">
                                                 <div class="cm_img">
                                                     <img src="{% static 'images/resources/bg-img4.png' %}" alt="">
@@ -715,7 +716,7 @@
                 url: url,
                 processData: false,
                 contentType: false,
-                method: 'POST',
+                type: 'POST',
                 data: formData,
                 success: function (data) {
                     {#window.location.href = '/about/list';#}
@@ -747,7 +748,7 @@
                 url: url,
                 processData: false,
                 contentType: false,
-                method: 'POST',
+                type: 'POST',
                 data: formData,
                 success: function (data) {
                     {#window.location.href = '/about/list';#}
@@ -780,7 +781,7 @@
                 url: url,
                 processData: false,
                 contentType: false,
-                method: 'POST',
+                type: 'POST',
                 data: formData,
                 success: function (data) {
                     {#window.location.href = '/about/list';#}
@@ -825,7 +826,7 @@
                 url: url,
                 processData: false,
                 contentType: false,
-                method: 'POST',
+                type: 'POST',
                 data: formData,
                 success: function (data) {
                     {#window.location.href = '/about/list';#}
@@ -838,7 +839,7 @@
     });
 </script>
 
-<<script>
+<script>
         $(document).ready(function () {
             $(".createReply").click(function (e) {
                 e.preventDefault();
@@ -848,14 +849,6 @@
 
 
             formData.append('text', input);
-
-
-            {#formData.append('category', $('input[name="category"]').val());#}
-            {#formData.append('skills', $('input[name="skills"]').val());#}
-            {#formData.append('price', $('select[name="price"]').val());#}
-            {#formData.append('time', $('input[name="time"]').val());#}
-            {#formData.append('description', $('input[name="description"]').val());#}
-            {#formData.append('title', title);#}
 
             var url = $("#createReply").data("url");
             var id = this.getAttribute("data-id");
@@ -869,7 +862,7 @@
                 url: url,
                 processData: false,
                 contentType: false,
-                method: 'POST',
+                type: 'POST',
                 data: formData,
                 success: function (data) {
                     {#window.location.href = '/about/list';#}
@@ -881,50 +874,6 @@
         })
     });
 </script>
-
-{#<script>#}
-{#        $(document).ready(function () {#}
-{#            $("#createReply").click(function (e) {#}
-{#                e.preventDefault();#}
-{##}
-{#            let formData = new FormData();#}
-{##}
-{#            formData.append('text', $('input[name="text"]').val());#}
-            {#formData.append('category', $("#category2").find(":selected").text());#}
-            {#formData.append('skills', $('input[name="skills2"]').val());#}
-            {#formData.append('price', $('input[name="price2"]').val());#}
-            {#formData.append('time', $("#time2").find(":selected").text());#}
-            {#formData.append('description', $('input[name="description2"]').val());#}
-{##}
-            {#formData.append('category', $('input[name="category"]').val());#}
-            {#formData.append('skills', $('input[name="skills"]').val());#}
-            {#formData.append('price', $('select[name="price"]').val());#}
-            {#formData.append('time', $('input[name="time"]').val());#}
-            {#formData.append('description', $('input[name="description"]').val());#}
-            {#formData.append('title', title);#}
-{##}
-{#            var url = $("#createReply").data("url");#}
-{#            var id = $("#createReply").data("id");#}
-{##}
-{#            formData.append('parent_id', id);#}
-{##}
-{#            $.ajax({#}
-{#                headers: {"X-CSRFToken": "{{csrf_token}}"},#}
-{#                url: url,#}
-{#                processData: false,#}
-{#                contentType: false,#}
-{#                method: 'POST',#}
-{#                data: formData,#}
-{#                success: function (data) {#}
-                    {#window.location.href = '/about/list';#}
-{#                },#}
-{#                error: function (data) {#}
-{#                    alert('Error');#}
-{#                }#}
-{#            });#}
-{#        })#}
-{#    });#}
-{#</script>#}
 
     <script>
         $(document).ready(function () {
@@ -940,20 +889,13 @@
             formData.append('time', $("#time2").find(":selected").text());
             formData.append('description', $('input[name="description2"]').val());
 
-            {#formData.append('category', $('input[name="category"]').val());#}
-            {#formData.append('skills', $('input[name="skills"]').val());#}
-            {#formData.append('price', $('select[name="price"]').val());#}
-            {#formData.append('time', $('input[name="time"]').val());#}
-            {#formData.append('description', $('input[name="description"]').val());#}
-            {#formData.append('title', title);#}
-
             var url = $("#createButton").data("url");
             $.ajax({
                 headers: {"X-CSRFToken": "{{csrf_token}}"},
                 url: url,
                 processData: false,
                 contentType: false,
-                method: 'POST',
+                type: 'POST',
                 data: formData,
                 success: function (data) {
                     {#window.location.href = '/about/list';#}
@@ -980,7 +922,7 @@
                 url: url,
                 processData: false,
                 contentType: false,
-                method: 'POST',
+                type: 'POST',
                 data: formData,
                 success: function (data) {
                     {#window.location.href = '/service/list';#}

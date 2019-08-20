@@ -113,6 +113,10 @@ class ViewSerializer(ModelSerializer):
 
         return p
 
+class Notification_List_Serializer(ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = ()
 
 
 

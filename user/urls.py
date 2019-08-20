@@ -10,6 +10,7 @@ urlpatterns = [
     path('following/', views.User_following.as_view(), name='user-following'),
     path('test/', views.Call_Index.as_view(), name='test'),
     path('detail/<int:pk>', views.Person_DetailView.as_view(), name='user-detail'),
+    path('uname/', views.Person_detail_byUsername.as_view(), name='user-detail-username'),
     path('search/', Serach_View.as_view(), name='user-search'),
 
 ]
